@@ -16,13 +16,13 @@ public class ActionZone : MonoBehaviour {
 
 	public void Enter(Color c)
 	{
-		Debug.Log("player is in " + name);
+		//Debug.Log("player is in " + name);
 		GetComponent<MeshRenderer>().material.color = c;
 	}
 
 	public void Leave(Color c)
 	{
-		Debug.Log("player has leaved " + name);
+		//Debug.Log("player has leaved " + name);
 		GetComponent<MeshRenderer>().material.color = c;
 	}
 }

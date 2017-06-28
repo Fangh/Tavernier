@@ -46,6 +46,15 @@ public class SlotManager : MonoBehaviour
 		}
 	}
 
+	public void AddDrinkInSlot(GameObject item)
+	{
+		item.transform.SetParent(target.transform);
+		item.transform.localPosition = Vector3.zero;
+		itemInSlot = item;
+		if (hasClient)
+			client.CanDrink();
+	}
+
 
 	void ClientArrive()
 	{

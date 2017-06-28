@@ -12,8 +12,7 @@ public class Pint : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		fillGauge.fillAmount = 0f;
-		
+		fillGauge.fillAmount = 0f;		
 	}
 	
 	// Update is called once per frame

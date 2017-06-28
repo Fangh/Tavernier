@@ -5,13 +5,23 @@ using UnityEngine.UI;
 
 public class Client : MonoBehaviour
 {
+	public string need = "Pint";
+	public float drinkingSpeed = 1f;
+	public float happinessSpeed = 0.05f;
+	public float delayBeforeThirsty = 2f;
+
+	public float drinkingSpeedMin = 0.5f;
+	public float drinkingSpeedMax = 1.5f;
+	public float happinessSpeedMin = 0.01f;
+	public float happinessSpeedMax = 0.1f;
+	public float happinessMin = 0.25f;
+	public float happinessMax = 0.50f;
+
+
 	Image happinessGauge = null;
 	float happiness = 0;
 	SlotManager mySlot = null;
 
-	public string need = "Pint";
-	public float drinkingSpeed = 1f;
-	public float happinessSpeed = 0.05f;
 
 	private void Awake()
 	{
@@ -33,10 +43,16 @@ public class Client : MonoBehaviour
 			}
 		}
 	}
-	
+
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
+		if (delayBeforeThirsty > 0)
+		{ 
+			delayBeforeThirsty -= Time.deltaTime;
+			return;
+		}
+
 		happinessGauge.fillAmount = happiness;
 		if (happiness >= 1)
 		{
@@ -50,12 +66,19 @@ public class Client : MonoBehaviour
 		}
 	}
 
+	public void CanDrink()
+	{
+		delayBeforeThirsty = 0;
+	}
+
 	public void Init()
 	{
 		need = "Pint";
-		happiness = Random.Range(0.25f, 0.50f);
-		drinkingSpeed = Random.Range(0.5f, 2.5f);
-		happinessSpeed = Random.Range(0.01f, 0.2f);
+		happiness = Random.Range(happinessMin, happinessMax);
+		drinkingSpeed = Random.Range(drinkingSpeedMin, drinkingSpeedMax);
+		happinessSpeed = Random.Range(happinessSpeedMin, happinessSpeedMax);
+
+		happinessGauge.fillAmount = happiness;
 	}
 
 	public void DecreaseHappiness()

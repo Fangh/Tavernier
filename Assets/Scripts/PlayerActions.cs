@@ -78,9 +78,7 @@ public class PlayerActions : MonoBehaviour
 			}
 			else
 			{
-				item.transform.SetParent(currentTargetedSlot.target.transform);
-				currentTargetedSlot.itemInSlot = item;
-				item.transform.localPosition = Vector3.zero;
+				currentTargetedSlot.AddDrinkInSlot(item);
 			}		
 		}
 
@@ -98,9 +96,7 @@ public class PlayerActions : MonoBehaviour
 			}
 			else
 			{
-				item.transform.SetParent(currentTargetedSlot.target.transform);
-				currentTargetedSlot.itemInSlot = item;
-				item.transform.localPosition = Vector3.zero;
+				currentTargetedSlot.AddDrinkInSlot(item);
 			}
 		}
 
