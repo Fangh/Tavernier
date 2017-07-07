@@ -8,6 +8,7 @@ public class Pint : MonoBehaviour
 	public float filling = 0f;
 	public float capacity = 50f;
 	public Image fillGauge = null;
+	public GameObject FXPrefab = null;
 
 	// Use this for initialization
 	void Start ()
@@ -24,5 +25,30 @@ public class Pint : MonoBehaviour
 	public void Drink(float speed)
 	{
 		filling -= speed * Time.deltaTime;
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "Ground")
+		{
+			DestroyIn(0f);
+		}
+	}
+
+	public void DestroyIn(float time = 0f, bool withFx = true)
+	{
+		StartCoroutine(CoroutineDestroyIn(time, withFx));
+	}
+
+	private IEnumerator CoroutineDestroyIn(float time, bool withFx)
+	{
+		yield return new WaitForSeconds(time);
+		if (withFx)
+		{
+			GameObject fx = Instantiate(FXPrefab, transform.position, Quaternion.identity) as GameObject;
+			Destroy(fx, 3f);
+		}
+		Destroy(gameObject);
+
 	}
 }

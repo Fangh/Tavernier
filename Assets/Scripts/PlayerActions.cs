@@ -75,6 +75,7 @@ public class PlayerActions : MonoBehaviour
 				item.GetComponent<Rigidbody>().useGravity = true;
 				item.GetComponent<Rigidbody>().isKinematic = false;
 				item.transform.SetParent(null);
+				item.GetComponent<Pint>().DestroyIn(3f, false);
 			}
 			else
 			{
@@ -93,6 +94,7 @@ public class PlayerActions : MonoBehaviour
 				item.GetComponent<Rigidbody>().useGravity = true;
 				item.GetComponent<Rigidbody>().isKinematic = false;
 				item.transform.SetParent(null);
+				item.GetComponent<Pint>().DestroyIn(3f, false);
 			}
 			else
 			{
